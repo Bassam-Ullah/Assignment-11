@@ -1,0 +1,38 @@
+<div class="form-container">
+  <h1>LOGIN FORM</h1>
+  <form class="add-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <input type="text" formControlName="username" placeholder="UserName" />
+    </div>
+    <small
+      *ngIf="
+        !loginForm.get('username')?.valid && loginForm.get('username')?.touched
+      "
+      >This field is required with minimum 3 characters</small
+    >
+
+    <div class="form-control">
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </div>
+    <small
+      *ngIf="
+        !loginForm.get('password')?.valid && loginForm.get('password')?.touched
+      "
+      >This field is required with minimum 8 characters</small
+    >
+
+    <div class="form-control">
+      <input type="submit" value="Submit" />
+      <small *ngIf="!loginForm?.valid && submitButtonClicked"
+        >Enter the Valid User Data</small
+      >
+    </div>
+
+    <br />
+    <a routerLink="/register">Register?</a>
+  </form>
+</div>

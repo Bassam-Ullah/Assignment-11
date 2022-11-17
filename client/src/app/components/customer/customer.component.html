@@ -1,0 +1,44 @@
+<div class="table-container">
+  <table>
+    <tr>
+      <th *ngFor="let heading of headings">{{ heading }}</th>
+    </tr>
+    <tr *ngFor="let customer of customersData">
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.website }}</td>
+      <td>{{ customer.address }}</td>
+
+      <td>
+        <button class="edit-btn" (click)="onEdit($event)">Edit</button>
+        <button class="delete-btn" (click)="onDelete(customer)">Delete</button>
+        <button
+          class="save-btn"
+          style="display: none"
+          (click)="onSave($event, customer)"
+        >
+          Save
+        </button>
+        <button
+          class="cancel-btn"
+          style="display: none"
+          (click)="onCancel($event)"
+        >
+          Cancel
+        </button>
+      </td>
+      <td>
+        <button class="toogle-btn" (click)="onShowUsers(customer)">
+          Show Users
+        </button>
+
+        <button class="toggle-btn" (click)="onHideUsers()">Hide Users</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<app-add-customer (onSubmitCustomer)="onAddCustomer()"></app-add-customer>
+<app-related-users
+  *ngIf="showRelatedUsers"
+  [customerId]="customerId"
+  [usersData]="relatedUsers"
+></app-related-users>

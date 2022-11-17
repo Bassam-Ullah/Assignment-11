@@ -1,0 +1,12 @@
+<div class="topnav" *ngIf="isLoggedIn()">
+  <a
+    routerLink="users"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Users</a
+  >
+  <a routerLink="customers" routerLinkActive="active">Customers</a>
+  <a (click)="logOut()">Log Out</a>
+</div>
+
+<router-outlet></router-outlet>

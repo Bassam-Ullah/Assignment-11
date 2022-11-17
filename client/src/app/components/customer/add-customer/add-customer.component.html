@@ -1,0 +1,51 @@
+<div *ngIf="showAddForm" class="form-container">
+  <form class="add-form" [formGroup]="addCustomerForm" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <input type="text" formControlName="name" placeholder="Name" />
+    </div>
+    <small
+      *ngIf="
+        !addCustomerForm.get('name')?.valid &&
+        addCustomerForm.get('name')?.touched
+      "
+      >Required Field</small
+    >
+
+    <div class="form-control">
+      <input type="text" formControlName="website" placeholder="Website" />
+    </div>
+    <small
+      *ngIf="
+        !addCustomerForm.get('website')?.valid &&
+        addCustomerForm.get('website')?.touched
+      "
+      >Required Field</small
+    >
+
+    <div class="form-control">
+      <input type="text" formControlName="address" placeholder="Address" />
+    </div>
+    <small
+      *ngIf="
+        !addCustomerForm.get('address')?.valid &&
+        addCustomerForm.get('address')?.touched
+      "
+      >Required Field</small
+    >
+
+    <div class="form-control">
+      <input
+        type="submit"
+        value="Submit"
+        [disabled]="addCustomerForm.status === 'INVALID'"
+      />
+    </div>
+  </form>
+</div>
+<button
+  *ngIf="showAddButton"
+  id="add-btn"
+  (click)="showAddForm = true; showAddButton = !showAddButton"
+>
+  Add Customer
+</button>
